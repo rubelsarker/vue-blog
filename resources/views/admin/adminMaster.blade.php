@@ -133,6 +133,12 @@
                             <span class="hide-menu">Dashboard</span>
                         </router-link>
                     </li>
+                      <li class="sidebar-item">
+                        <router-link class="sidebar-link waves-effect waves-dark sidebar-link" to="/category" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span class="hide-menu">Category</span>
+                        </router-link>
+                    </li>
 
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Errors </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
