@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "sweetalert2": "^10.0.2",
         "vform": "^1.0.1",
         "vue-router": "^3.4.3"
     }

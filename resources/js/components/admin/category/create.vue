@@ -74,14 +74,15 @@
         },
         methods:{
             addCategory(){
-                    this.form.post('/api/category/',this.form)
+                    this.form.post('/api/category/')
                     .then((response) => {
                         if(response.status == 200){
-                            console.log('okk');
+                            this.$router.push({name: 'category'});
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Category added successfully'
+                            })
                         }
-                        // this.$router.push({name: 'customer'});
-                        // Notification.success();
-
                     })
                     .catch((error) =>{
                          console.log(error.response.data.errors)
