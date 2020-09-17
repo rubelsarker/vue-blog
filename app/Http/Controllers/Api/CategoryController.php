@@ -55,29 +55,57 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        //
+        $row = Category::findOrFail($id);
+        return response()->json(['row' => $row]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'categoryName'   => 'required|unique:categories,categoryName,'.$id,
+        ]);
+        $row = Category::findOrFail($id);
+        $photo = $request->newCategoryImage;
+        if($photo){
+            $position = strpos($photo,';');
+            $sub = substr($photo, 0, $position);
+            $ext = explode('/',$sub)[1];
+            $imageName = time().".".$ext;
+            $upload_path = 'upload/category';
+            if (!File::exists($upload_path)) {
+                File::makeDirectory($upload_path, $mode = 0777, true, true);
+            }
+            if(file_exists($row->categoryImage)){
+                unlink($row->categoryImage);
+            }
+            $img = Image::make($photo)->resize(240,200);
+            $image_url = $upload_path . '/' . $imageName;
+            $img->save($image_url);
+        }
+        else{
+            $image_url = $row->categoryImage;
+        }
+        $data = [
+            'categoryName'          => $request->categoryName,
+            'categoryImage'         => $image_url
+        ];
+        Category::where('id',$id)->update($data);
+        return response()->json([
+            'staus' => 200
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $row = Category::findOrFail($id);
+        if(file_exists($row->categoryImage)){
+            unlink($row->categoryImage);
+        }
+        $row->delete();
+        return response()->json([
+            'staus' => 200
+        ]);
     }
 }

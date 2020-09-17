@@ -41,8 +41,8 @@
                                       <td><img :src="category.categoryImage" height="45" width="45" alt="Icon"></td>
                                       <td>{{category.created_at | timeformat}}</td>
                                       <td class="text-center">
-                                        <a class="btn btn-sm btn-info text-white"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-sm btn-danger text-white"><i class="fas fa-trash"></i></a>
+                                        <router-link :to="{name: 'category-edit', params:{id: category.id}}" class="btn btn-sm btn-info text-white"><i class="fas fa-edit"></i></router-link>
+                                        <a @click.prevent="deleteCategory(category.id)" class="btn btn-sm btn-danger text-white"><i class="fas fa-trash"></i></a>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -62,6 +62,37 @@
         },
         mounted(){
             this.$store.dispatch('allCategory')
+        },
+        methods:{
+            deleteCategory(id){
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to delete this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        axios.delete('/api/category/'+id)
+                            .then((response) =>{
+                                if(response.status == 200){
+                                    this.$store.dispatch('allCategory')
+                                }
+
+                            })
+                            .catch(() => {
+                                this.$route.push({name:'category'})
+                            })
+                        Swal.fire(
+                            'Deleted!',
+                            'Category has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            }
         }
     }
 </script>

@@ -92,7 +92,12 @@
             onFileSelected(event){
                 let file = event.target.files[0];
                 if(file.size > 1048770){
-                    console.log('file size large');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'File size too large!',
+                        footer: '<a href>Why do I have this issue?</a>'
+                    })
                 }
                 else {
                     let reader = new FileReader();

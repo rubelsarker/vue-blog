@@ -9,5 +9,5 @@ export const routes = [
     //category
     { path: '/category', component: indexCategory, name:'category'},
     { path: '/category-create', component: createCategory, name:'category-crate'},
-    { path: '/category-edit', component: editCategory, name:'category-edit'},
+    { path: '/category-edit/:id', component: editCategory, name:'category-edit'},
 ];
