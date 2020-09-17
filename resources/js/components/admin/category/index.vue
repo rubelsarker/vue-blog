@@ -29,13 +29,17 @@
                                     <tr>
                                       <th scope="col">#</th>
                                       <th scope="col">Name</th>
+                                      <th scope="col">Icon</th>
+                                      <th scope="col">Date</th>
                                       <th scope="col" class="text-center">Action</th>
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>Mark</td>
+                                    <tr v-for="(category,index) in getAllCategory" :key="category.id">
+                                      <th scope="row">{{index + 1}}</th>
+                                      <td>{{category.categoryName}}</td>
+                                      <td><img :src="category.categoryImage" height="45" width="45" alt="Icon"></td>
+                                      <td>{{category.created_at | timeformat}}</td>
                                       <td class="text-center">
                                         <a class="btn btn-sm btn-info text-white"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-sm btn-danger text-white"><i class="fas fa-trash"></i></a>
@@ -49,3 +53,15 @@
         </div>
     </span>
 </template>
+<script>
+    export default {
+        computed:{
+            getAllCategory(){
+                return this.$store.getters.getCategory;
+            }
+        },
+        mounted(){
+            this.$store.dispatch('allCategory')
+        }
+    }
+</script>

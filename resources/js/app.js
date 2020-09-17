@@ -1,5 +1,17 @@
 require('./bootstrap');
 window.Vue = require('vue');
+//moment js
+import moment from 'moment';
+Vue.filter('timeformat',(arg) =>{
+   return moment(arg).format("MMM Do YYYY");
+});
+//vue ex
+import Vuex from 'vuex'
+Vue.use(Vuex);
+import storeData from './store/index'
+const store = new Vuex.Store(
+    storeData
+);
 //sweet alert
 import Swal from 'sweetalert2'
 window.Swal = Swal;
@@ -32,5 +44,6 @@ const router = new VueRouter({
 Vue.component('admin-master', require('./components/admin/AdminMaster').default);
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store
 });
