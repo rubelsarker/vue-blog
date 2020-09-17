@@ -61,7 +61,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $row = Post::where('id',$id)->with('categories','tags')->first();
+        $row = Post::where('id',$id)->with('categories','tags','user')->first();
         $cat = [];
         $tags = [];
         foreach ($row->categories as $r){

@@ -11,7 +11,7 @@ import editTag from './components/admin/tag/edit';
 import indexPost from './components/admin/post/index';
 import createPost from './components/admin/post/create';
 import editPost from './components/admin/post/edit';
-import showPost from './components/admin/post/edit';
+import showPost from './components/admin/post/show';
 export const routes = [
     //admin dashboard
     { path: '/home', component: adminHome, name:'home'},
