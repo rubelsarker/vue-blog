@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.14.0",
+        "@kangc/v-md-editor": "^1.4.10",
         "moment": "^2.28.0",
         "sweetalert2": "^10.0.2",
         "vform": "^1.0.1",

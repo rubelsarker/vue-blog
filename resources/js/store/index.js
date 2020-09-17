@@ -1,7 +1,8 @@
 export default {
     state:{
         categories:[],
-        tags:[]
+        tags:[],
+        posts:[]
     },
     getters:{
         getCategory(state){
@@ -9,6 +10,9 @@ export default {
         },
         getTag(state){
             return state.tags;
+        },
+        getPost(state){
+            return state.posts;
         }
     },
     actions:{
@@ -29,6 +33,15 @@ export default {
                 .catch((e) =>{
                     console.log(e)
                 })
+        },
+        allPost(context){
+            axios.get('/api/post/')
+                .then((response) => {
+                    context.commit('posts',response.data.posts)
+                })
+                .catch((e) =>{
+                    console.log(e)
+                })
         }
     },
     mutations:{
@@ -37,6 +50,10 @@ export default {
         },
         tags(state,payload){
             return state.tags = payload
+        },
+        posts(state,payload){
+            return state.posts = payload
         }
+
     }
 }

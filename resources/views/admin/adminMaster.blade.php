@@ -145,6 +145,12 @@
                             <span class="hide-menu">Tag</span>
                         </router-link>
                     </li>
+                     <li class="sidebar-item">
+                        <router-link class="sidebar-link waves-effect waves-dark sidebar-link" to="/post" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span class="hide-menu">Post</span>
+                        </router-link>
+                    </li>
 
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Errors </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
@@ -166,6 +172,7 @@
 </span>
 <script src="{{asset('js/app.js')}}" defer></script>
 <script src="{{url('')}}/asset/admin/assets/libs/jquery/dist/jquery.min.js"></script>
+
 <!--Wave Effects -->
 <script src="{{url('')}}/asset/admin/dist/js/waves.js"></script>
 <!--Menu sidebar -->

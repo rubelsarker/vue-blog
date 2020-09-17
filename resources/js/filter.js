@@ -3,3 +3,6 @@ import moment from 'moment';
 Vue.filter('timeformat',(arg) =>{
     return moment(arg).format("MMM Do YYYY");
 });
+Vue.filter('shortLength',(text,length,suffix) =>{
+    return text.substr(0,length)+suffix;
+});

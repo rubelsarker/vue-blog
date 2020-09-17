@@ -1,5 +1,14 @@
 require('./bootstrap');
 window.Vue = require('vue');
+//editor
+
+import VMdEditor from '@kangc/v-md-editor';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+
+VMdEditor.use(githubTheme);
+Vue.use(VMdEditor);
+
 //moment js
 import {filter} from './filter'
 //vue ex
