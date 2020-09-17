@@ -133,10 +133,16 @@
                             <span class="hide-menu">Dashboard</span>
                         </router-link>
                     </li>
-                      <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <router-link class="sidebar-link waves-effect waves-dark sidebar-link" to="/category" aria-expanded="false">
                             <i class="mdi mdi-view-dashboard"></i>
                             <span class="hide-menu">Category</span>
+                        </router-link>
+                    </li>
+                     <li class="sidebar-item">
+                        <router-link class="sidebar-link waves-effect waves-dark sidebar-link" to="/tag" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span class="hide-menu">Tag</span>
                         </router-link>
                     </li>
 
