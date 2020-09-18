@@ -12,6 +12,8 @@ import indexPost from './components/admin/post/index';
 import createPost from './components/admin/post/create';
 import editPost from './components/admin/post/edit';
 import showPost from './components/admin/post/show';
+//public
+import publicHome from './components/public/PublicHome';
 export const routes = [
     //admin dashboard
     { path: '/home', component: adminHome, name:'home'},
@@ -28,4 +30,8 @@ export const routes = [
     { path: '/post-create', component: createPost, name:'post-create'},
     { path: '/post-edit/:id', component: editPost, name:'post-edit'},
     { path: '/post-show/:id', component: showPost, name:'post-show'},
+    //public
+    { path: '/', component: publicHome, name:'/'},
+
 ];
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('public.index');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [TestController::class, 'index']);
+Route::get('/posts', [BlogController::class, 'index']);
 Route::get('{slug?}', [App\Http\Controllers\HomeController::class, 'index'])->where('slug', '[\/\w\.-]*');

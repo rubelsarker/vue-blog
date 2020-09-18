@@ -48,6 +48,7 @@ const router = new VueRouter({
 });
 //admin master
 Vue.component('admin-master', require('./components/admin/AdminMaster').default);
+Vue.component('public-master', require('./components/public/PublicMaster').default);
 const app = new Vue({
     el: '#app',
     router,

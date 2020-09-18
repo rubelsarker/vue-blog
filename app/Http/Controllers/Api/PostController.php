@@ -76,6 +76,7 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'title'        => 'required|min:10',
             'body'         => 'required'
@@ -107,8 +108,8 @@ class PostController extends Controller
             'slug'          => Str::slug($request->title),
             'postImage'     => $image_url,
         ];
-        $dataId  = Post::where('id',$id)->update($data);
-        $post = Post::findOrFail($dataId);
+        Post::where('id',$id)->update($data);
+        $post = Post::findOrFail($id);
         $post->categories()->sync($request->categories);
         $post->tags()->sync($request->tags);
         return response()->json([
